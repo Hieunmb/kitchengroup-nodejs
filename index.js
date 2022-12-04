@@ -48,7 +48,7 @@ app.get("/product-detail1", function (req,res) {
 });
 app.get("/product-title", function (req,res) {
     const q=req.query.q;
-    const sql = select * from nhom2_product where title like '%${q}%';
+    const sql = `select * from nhom2_product where title like '%${q}%'`;
     conn.query(sql, function (err, data) {
         res.send(data)
     })
