@@ -68,3 +68,10 @@ app.get("/product-title", function (req,res) {
         res.send(data)
     })
 });
+app.get("/brand", function (req,res) {
+    const lh =req.query.id;
+    const sql = "select * from nhom2_brand where id ="+lh;
+    conn.query(sql, function (err, data) {
+        res.send(data)
+    })
+});
