@@ -52,4 +52,19 @@ app.get("/product-title", function (req,res) {
     conn.query(sql, function (err, data) {
         res.send(data)
     })
+});app.get("/count-product", function (req,res) {
+    const sql ="select count(*) as id from nhom2_product";
+    conn.query(sql,function (err,data){
+        res.send(data)
+    })
+});app.get("/count-brand", function (req,res) {
+    const sql ="select count(*) as id from nhom2_brand";
+    conn.query(sql,function (err,data){
+        res.send(data)
+    })
+});app.get("/count-category", function (req,res) {
+    const sql ="select count(*) as id from nhom2_category2";
+    conn.query(sql,function (err,data){
+        res.send(data)
+    })
 });
