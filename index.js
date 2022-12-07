@@ -69,8 +69,27 @@ app.get("/product-title", function (req,res) {
     })
 });
 app.get("/brand", function (req,res) {
-    const lh =req.query.id;
-    const sql = "select * from nhom2_brand where id ="+lh;
+    const sql = "select * from nhom2_brand";
+    conn.query(sql, function (err, data) {
+        res.send(data)
+    })
+});app.get("/foodstorage", function (req,res) {
+    const sql = "select * from nhom2_category2 where id_category=4";
+    conn.query(sql, function (err, data) {
+        res.send(data)
+    })
+});app.get("/refrigeration", function (req,res) {
+    const sql = "select * from nhom2_category2 where id_category=2";
+    conn.query(sql, function (err, data) {
+        res.send(data)
+    })
+});app.get("/cookware", function (req,res) {
+    const sql = "select * from nhom2_category2 where id_category=1";
+    conn.query(sql, function (err, data) {
+        res.send(data)
+    })
+});app.get("/appliances", function (req,res) {
+    const sql = "select * from nhom2_category2 where id_category=3";
     conn.query(sql, function (err, data) {
         res.send(data)
     })
