@@ -163,4 +163,53 @@ app.get("/search-product", function (req,res) {
         res.send(data)
     })
 });
+// page
+app.get("/count-product", function (req,res) {
+    const sql ="select count(*) as id from nhom2_product";
+    conn.query(sql,function (err,data){
+        res.send(data)
+    })
+});
+app.get("/count-brand", function (req,res) {
+    const sql ="select count(*) as id from nhom2_brand";
+    conn.query(sql,function (err,data){
+        res.send(data)
+    })
+});
+app.get("/count-category", function (req,res) {
+    const sql ="select count(*) as id from nhom2_category2";
+    conn.query(sql,function (err,data){
+        res.send(data)
+    })
+});
+app.get("/brand", function (req,res) {
+    const sql = "select * from nhom2_brand";
+    conn.query(sql, function (err, data) {
+        res.send(data)
+    })
+});
+app.get("/foodstorage", function (req,res) {
+    const sql = "select * from nhom2_category2 where id_category=4";
+    conn.query(sql, function (err, data) {
+        res.send(data)
+    })
+});
+app.get("/refrigeration", function (req,res) {
+    const sql = "select * from nhom2_category2 where id_category=2";
+    conn.query(sql, function (err, data) {
+        res.send(data)
+    })
+});
+app.get("/cookware", function (req,res) {
+    const sql = "select * from nhom2_category2 where id_category=1";
+    conn.query(sql, function (err, data) {
+        res.send(data)
+    })
+});
+app.get("/appliances", function (req,res) {
+    const sql = "select * from nhom2_category2 where id_category=3";
+    conn.query(sql, function (err, data) {
+        res.send(data)
+    })
+});
 
