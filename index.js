@@ -23,13 +23,62 @@ const conn=mysql.createConnection(config);
 
 
 // shop-page
-app.get("/product2", function (req,res) {
+app.get("/product-", function (req,res) {
     const sql = "select * from nhom2_product";
     conn.query(sql, function (err, data) {
         res.send(data)
     })
 });
-
+app.get("/product-nameasc", function (req,res) {
+    const sql = "SELECT * FROM `nhom2_product` ORDER BY title ASC;";
+    conn.query(sql, function (err, data) {
+        res.send(data)
+    })
+});
+app.get("/product-namedesc", function (req,res) {
+    const sql = "SELECT * FROM `nhom2_product` ORDER BY title DESC";
+    conn.query(sql, function (err, data) {
+        res.send(data)
+    })
+});
+app.get("/product-priceasc", function (req,res) {
+    const sql = "SELECT * FROM `nhom2_product` ORDER BY price ASC";
+    conn.query(sql, function (err, data) {
+        res.send(data)
+    })
+});
+app.get("/product-pricedesc", function (req,res) {
+    const sql = "SELECT * FROM `nhom2_product` ORDER BY price DESC";
+    conn.query(sql, function (err, data) {
+        res.send(data)
+    })
+});
+// shop-category
+app.get("/product-refrigeration", function (req,res) {
+    const sql = "SELECT * FROM `nhom2_product` WHERE category_id IN (SELECT id FROM `nhom2_category2` where id_category = 2)";
+    conn.query(sql, function (err, data) {
+        res.send(data)
+    })
+});
+app.get("/product-foodstorage", function (req,res) {
+    const sql = "SELECT * FROM `nhom2_product` WHERE category_id IN (SELECT id FROM `nhom2_category2` where id_category = 4)";
+    conn.query(sql, function (err, data) {
+        res.send(data)
+    })
+});
+app.get("/product-knivesandtools", function (req,res) {
+    const sql = "SELECT * FROM `nhom2_product` WHERE category_id IN (SELECT id FROM `nhom2_category2` where id_category = 5)";
+    conn.query(sql, function (err, data) {
+        res.send(data)
+    })
+});
+// shop-brand
+app.get("/product-brand", function (req,res) {
+    const sql = "select * from nhom2_brand";
+    conn.query(sql, function (err, data) {
+        res.send(data)
+    })
+});
 // home-page
 app.get("/product-feature", function (req,res) {
     const sql = "select * from nhom2_product where id in (1, 6, 11, 16, 21, 26, 31, 36, 41, 46, 51, 56, 61, 66, 71, 76, 81, 86, 91, 96, 101, 106, 111, 116, 121, 126, 131, 136, 141, 145)";
@@ -98,13 +147,6 @@ app.get("/productappliances-bestseller", function (req,res) {
     })
 });
 // product-page
-app.get("/product-detail", function (req,res) {
-    const lh =req.query.id;
-    const sql = "select * from nhom2_product where id ="+lh;
-    conn.query(sql, function (err, data) {
-        res.send(data)
-    })
-});
 app.get("/product-detail1", function (req,res) {
     const lh =req.query.id;
     const sql = "select * from nhom2_product a inner join nhom2_galery b on a.id = b.product_id where a.id ="+lh;
@@ -112,6 +154,7 @@ app.get("/product-detail1", function (req,res) {
         res.send(data)
     })
 });
+
 // search-page
 app.get("/search-product", function (req,res) {
     const key = req.query.key;
